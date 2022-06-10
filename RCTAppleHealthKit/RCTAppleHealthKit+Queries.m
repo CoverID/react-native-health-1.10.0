@@ -161,13 +161,18 @@
                                 }
                             }
 
+                            NSDictionary *meta = [sample metadata];
+                            if (meta == nil) {
+                                meta = [NSDictionary new];
+                            }
+
                             NSDictionary *elem = @{
                                                    @"activityId" : [NSNumber numberWithInt:[sample workoutActivityType]],
                                                    @"id" : [[sample UUID] UUIDString],
                                                    @"activityName" : type,
                                                    @"calories" : @(energy),
                                                    @"tracked" : @(isTracked),
-                                                   @"metadata" : [sample metadata],
+                                                   @"metadata" : meta,
                                                    @"sourceName" : [[[sample sourceRevision] source] name],
                                                    @"sourceId" : [[[sample sourceRevision] source] bundleIdentifier],
                                                    @"device": device,
@@ -353,13 +358,18 @@
                             }
                         }
 
+                        NSDictionary *meta = [sample metadata];
+                            if (meta == nil) {
+                                meta = [NSDictionary new];
+                            }
+
                         NSDictionary *elem = @{
                                                @"activityId" : [NSNumber numberWithInt:[sample workoutActivityType]],
                                                @"id" : [[sample UUID] UUIDString],
                                                @"activityName" : type,
                                                @"calories" : @(energy),
                                                @"tracked" : @(isTracked),
-                                               @"metadata" : [sample metadata],
+                                               @"metadata" : meta,
                                                @"sourceName" : [[[sample sourceRevision] source] name],
                                                @"sourceId" : [[[sample sourceRevision] source] bundleIdentifier],
                                                @"device": device,
